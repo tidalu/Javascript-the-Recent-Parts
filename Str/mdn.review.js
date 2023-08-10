@@ -243,4 +243,16 @@ console.log(latex`\unicode`);
 // note that the escape-sequence restriction is only dropped from tagged templates, but not from untagged template literals
 
 // const bad = `bad escape sequence: \unicode`; 
+// ignore  after this line 
+var arr = [3, 2, 1];
+var withArr = arr.with(2, 3) 
+console.log(arr.toSorted())
+console.log(arr)
+console.log(withArr)
+
+// ignore stops here
+
+
+
+
 
