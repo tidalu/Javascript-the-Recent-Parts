@@ -245,7 +245,7 @@ console.log(latex`\unicode`);
 // const bad = `bad escape sequence: \unicode`; 
 // ignore  after this line 
 var arr = [3, 2, 1];
-var withArr = arr.with(2, 3) 
+var withArr = arr.with(2, 3)
 console.log(arr.toSorted())
 console.log(arr)
 console.log(withArr)
@@ -254,5 +254,19 @@ console.log(withArr)
 
 
 
+var name0 = 'Alfred';
+var wage = 47;
 
+function greet() {
+    console.log(arguments);
+    // console.log(arguments[1]);
+    // console.log(arguments[2]);
+}
 
+greet`I am ${name0}, and ${wage} years old!`
+
+// function greet(arr, nameArg, ageArg) {
+//     console.log(arr[0] + nameArg + arr[1] + ageArg + arr[2]);
+// }
+// greet`Woah, ${name0} is ${wage}?`;
+//   // "Woah, Alfred is 47?"
