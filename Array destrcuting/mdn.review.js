@@ -477,7 +477,7 @@ console.log(teddy, toFixed); // undefined f toFixed()  { [ native code ] };
 
 // this happens when the pattern is empty
 
-// const {} = null; // TypeError: Cannot destructure 'null' as it is null.
+const {} = null; // TypeError: Cannot destructure 'null' as it is null.
 
 // the prototype chain is looked up when the object is deconstructed
 
@@ -491,5 +491,5 @@ const obj = {
 };
 
 const { self, prot } = obj;
-console.log(self, prot);
+console.log(self, prot)
 
