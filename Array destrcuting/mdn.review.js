@@ -234,7 +234,7 @@ function parseprotocol(url) {
 
 }
 console.log(
-    parseprotocol("https://developer.mozilla.org/en-US/docs/Web/JavaScript"), 
+    parseprotocol("https://developer.mozilla.org/en-US/docs/Web/JavaScript"),
 );
 
 // using array destructuring on any iterable ####
@@ -247,3 +247,249 @@ const [rm, em] = new Map([
 ]);
 
 console.log(rm, em); // [1, 2]. [3, 4]
+
+// non-iterables cannot be destructured as arrays
+
+const obje = { 0: "a", 1: "b", length: 2 };
+// const [first1, second ] = obje;
+// typeerror object is not iterable 
+
+
+// iterables are only until all bindings are assigned;
+
+const iter = {
+    *[Symbol.iterator]() {
+        for (const v of [0, 1, 2, 3]) {
+            console.log(v);
+            yield v;
+        }
+    },
+};
+
+const [el1, el2, ...reshta] = iter;
+// 0, 1
+
+
+// the rest binding is eagerly evaluated and creates a new array, instead of using the old iterable
+console.log(reshta);
+
+// object destructuring
+
+//basic assignment 
+
+const user = {
+    id: 42,
+    isVerified: true,
+};
+
+const {
+    id, isVerified
+} = user;
+
+
+console.log(id, isVerified)
+// assigning to new variable names
+// a property can be unpacked from an object and assigned to a variable with a different name than the object property.
+
+const o1 = { tel: 43, pq: true };
+const {
+    tel: foo1 = "copy",
+    pq: bar = "second"
+} = o1;
+
+console.log(foo1, bar);
+// here for example . const { p: foo } = o from the object o the property  named p and assigns it to a local variable named foo
+
+// Assigning to new iterable names and providing default values
+
+const ist = { p9: Number("98"), q9: false };
+const { p9: foobar, q9: barfoo } = ist;
+
+console.log(foobar, barfoo)
+
+// here , for example , const { p : foobar } = ist takes from the object ist the property named p and assigns it to local variable named foobar.
+
+// Assigning to new variable name
+// unpacked from an object and assigned to a variable with a different name.
+// Assigned a default value in case the unpacked value is undefined
+
+const { alfan: omega = 10, arfan: deltan = 5 } = { alfan: 3 };
+
+console.log(omega, deltan, ":  this")
+
+
+// unpacking properties from objects passed as a function parameter 
+
+const user1 = {
+    id4: 52,
+    nickname: "jdoe",
+    fullName: {
+        firsName: "Joe",
+        lastName: "Doe"
+    },
+};
+// ---------------
+const {
+    id4 = "age",
+    nickname = "nickname",
+    fullName: {
+        firsName = "Name",
+        lastName = "LastName"
+    },
+} = user1;
+// ---------------
+
+function userId({ id4 }) {
+    return id4;
+}
+console.log(userId(user1));
+
+// you can defined the name of the unpacked variable . Here we unpack the property named nickname  and rename it to dname for use within the function body
+
+function userDisplayName({
+    nickname: dname
+}) {
+    return dname;
+};
+
+console.log(userDisplayName(user1))
+
+// Nested objects also can be unpacked , the example below shows the property fullName.firstName being unpacked into a variable called name 
+
+function whois({ nickname, fullName: { firsName: name } }) {
+    return `${nickname} is ${name}`
+}
+
+console.log(whois(user1));
+
+// setting  a function parameter's default value 
+
+// default values can be specified using =, and will be used as variable values if a specified property does not exist in the passed object.
+
+// below we show a function where the default size is 'big', default co-ordinates are x: 0, yy: 0 and default radius is 25.
+
+function drawChart({
+    size = "big",
+    coords = { x: 0, y: 0 },
+    radius = 25,
+} = {}) {
+    return `${size}, ${Object.values(coords)}, ${radius} `;
+    // do some chart drawing 
+}
+
+console.log(drawChart({
+    coords: { x: 18, y: 30 },
+    radius: 30,
+}));
+
+
+// in the function signature for drawChart above, the destructured left hand side has a default value of an empty object = {};
+
+
+// nested object and array destructuring 
+
+const metadata = {
+    title: "Scratpad",
+    translation: [
+        {
+            locale: "de",
+            localizationTags: [],
+            lastEdit: "2014-04-14T08:43:37",
+            url: "/de/docs/Tools/Scratchpad",
+            title: "JavaScript-Umgebung",
+        },
+    ],
+    url: "/en-US/docs/Tools/Scratchpad",
+};
+
+const {
+    title: englishTitle, // rename 
+    translation: [
+        {
+            title: localeTitle,// rename 
+        },
+    ],
+} = metadata;
+
+console.log(englishTitle);
+console.log(localeTitle);
+
+// for of iteration and destructuring
+
+const people = [
+    {
+        name: "mike smith",
+        family: {
+            mother: "jane smith",
+            father: "harry smith",
+            sister: "smama smith",
+        },
+        age: 55,
+    },
+    {
+        name: "Tom Jones",
+        family: {
+            mother: "Norah Jones",
+            father: "Richard Jones",
+            brother: "Howard Jones",
+        },
+        age: 25,
+    },
+];
+
+for( const {
+    name: n,
+    family: {father: f}, 
+} of people) {
+    console.log(`Name: ${n}, Father: ${f}`);
+};
+
+
+// computed object property names and destructuring 
+
+// computed  property names, like on object literals, can be with destructuring
+
+const key = "z";
+const { [key]: football } = { z: "bar" };
+
+console.log(football); // 'bar;
+
+// invalid javascript identifier as a property name
+
+// destructuring can be used with property names that are not valid js identifiers by providing an alternative identifier that is valid.
+
+const base = { "fizz-buzz": true };
+const { "fizz-buzz": fizzBuzz } = base;
+
+console.log(fizzBuzz);  // true
+
+// destructing primitive values 
+
+const { teddy, toFixed } = 1;
+console.log(teddy, toFixed); // undefined f toFixed()  { [ native code ] };
+
+// same as accessing properties , destructuring null of undefined throws a TypeError.
+
+
+// const { emi } = undefined;
+
+// const { trump } = null;
+
+// this happens when the pattern is empty
+
+// const {} = null; // TypeError: Cannot destructure 'null' as it is null.
+
+// the prototype chain is looked up when the object is deconstructed
+
+// when deconstructing an object. if a property is not accessed in itself, it will continue to look up along the prototype chain.
+
+const obj = {
+    self: "123", 
+    __proto__: {
+        prot: "456", 
+    },
+};
+
+const { self, prot } = obj;
+console.log(self, prot);
+
