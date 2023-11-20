@@ -13,23 +13,20 @@ fakeAjax("http://get-the-workshop.tld",handleResponse);
 // *******************************************************
 
 
-function handleResponse({
-    topic = "JavaScript", 
-    format = "Live", 
-    slides: {
-        start = 0, 
-        end = 100
-    } = {}, 
-    ...otherProps
-} = {}) {
+function handleResponse( {
+	topic = "Javascript", 
+	format = "Live", 
+	slides : {
+		start = 0, 
+		end = 100
+	} ={}
+} = {} ) {
 
 	TestCase({
-		topic, 
-        format, 
-        slides: {
-            start, 
-            end
-        }, ...otherProps
+		topic, format, 
+		slides : {
+			start, end
+		}
 	});
 
 }
