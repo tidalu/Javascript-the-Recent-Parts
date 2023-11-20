@@ -17,6 +17,7 @@ const users = [
     id, 
     name, 
     totalSum : orders.reduce((val, sum) => val + sum, 0) 
-  }))
+  })) 
+  
   
   console.log(result)
