@@ -1,6 +1,6 @@
 function upper(strings,...values) {
 	var res = ""; 
-	for(i = 0; i < strings.length; i++ ) {
+	for(let i = 0; i < strings.length; i++ ) {
 		res += strings[i];
 		values[i] ? res+=`${values[i].toUpperCase()}` : ""
 	}
