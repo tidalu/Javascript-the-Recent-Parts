@@ -11,6 +11,13 @@
 
 // we can break the line automatically, it allows us, like just quotes does not , in quotes we should put backslash at the end of the line to break the like 
 
+// templare strings
+var name45 = "Kyle Sympson";
+var email45 = "ulugio23@gmail.com";
+var title45 = "Student";
+
+var msg = `Hello everybody, My madeup name is ${name45}, and here is my contacts in case of necessity : ${email45}, and i am a ${title45} `
+
 // tagged templates
 
 var amount = 12.3
