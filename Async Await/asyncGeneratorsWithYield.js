@@ -29,3 +29,10 @@ function *fetchURLs1(urls) {
         }
     };
 };
+
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield*
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function*
