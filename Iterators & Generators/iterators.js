@@ -1,5 +1,5 @@
-// mdn : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators
-
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncIterator
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator
 
 var str = "Hello";
 var world = ["w", "O", "R", "L", "D"];
